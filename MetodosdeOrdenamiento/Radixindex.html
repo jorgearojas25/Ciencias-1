@@ -1,0 +1,64 @@
+ <html>
+    <head>
+    <title>Radix Sort</title>
+    <meta charset="UTF-8">
+    </head>
+    <body> 
+    <script>
+    var values=[],a=[];
+    var temp=0,pos=0;
+    var n;
+    var count = 0;
+  
+    n=prompt("Ingrese el tamaño del Arreglo: ")
+    document.write("<font face='arial' size='4'>RADIX SORT </font>");
+    document.write("<br><br>");
+    for (a=0; a<n; a++) {
+    //values.push(Number(prompt("Ingrese el valor de la posición N° " + (a+1))));
+    values.push(Math.floor(Math.random(a)*1000+1));
+    }
+    document.write("<font face='arial' size='4'>Numeros");
+    document.write(" Arreglo ingresado </font>");
+    document.write("<br><br>");
+    for (a=0;a<n; a++) {
+    document.write("<font face='arial' size='4'> " +values[a] + "");
+    }
+    function radix_sort (A) {
+        var k = Math.max.apply(null, A.map(function(i) {
+            count += 3;
+        return Math.ceil(Math.log(i)/Math.log(2));
+        count += 3;
+        }));
+        for (var d = 0; d < k; ++d) {
+            count += 3;
+        for (var i = 0, p = 0, b = 1 << d, n = A.length; i < n; ++i) {
+            count += 3;
+        var o = A[i];
+        if ((o & b) == 0) {
+            count += 4;
+        A.splice(p++, 0, A.splice(i, 1)[0]);
+        count += 7;
+        }
+        }
+        }
+        return A,count;   
+    }
+    
+    radix_sort(values);
+    
+    document.write("<br><br>");
+         document.write("<font face='arial' size='4'>Arreglo Ordenado </font>");
+         document.write("<br><br>");
+         
+    for (a=0; a<n; a++) {
+    document.write("<font face='arial' size='4'> " + values[a]+"</font>");
+    } 
+    var formuIa = count;
+    var formula = (3*(15+n*3*3));
+    document.write("<br><br>")
+    document.write("<font face='arial' size='4'>Contador: " + count +"</font>");
+    document.write("<br><br>")
+    document.write("<font face='arial' size='4'>formula: " + formuIa +"</font>");
+    </script>
+    </body>
+    </html> 
