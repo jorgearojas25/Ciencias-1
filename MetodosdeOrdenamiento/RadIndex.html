@@ -1,10 +1,15 @@
  <!DOCTYPE html> 
+ <head>
+    <title>Radix Sort</title>
+	<meta charset="UTF-8">
+ </head>
  <body> 
  <script>
     var RadixSort_RevealingModule = function () {
+	
+	/*Falta introducir el contador y las operaciones elementales por formula*/
 
         var DIGIT_10 = 10;
-        //var buckets = new Array(DIGIT_10);
 
         RadixSort = function RadixSort(testCase, buckets) {
             var maxElement = Math.max.apply(null, testCase);
@@ -40,8 +45,18 @@
 
             return count;
         }
-
-        /*
+		
+        function CopyBucketToNumber(numbers) {
+            var k = 0;
+            for (var i = 0; i < DIGIT_10; i++) {
+                var bucket = buckets[i];
+                var length = bucket.length;
+                for (var j = 0; j < length; j++) {
+                    numbers[k++] = bucket[j];
+                }
+            }
+        }
+ /*
            Radix sort: 
            Sort most insignificant digit first, and then, move to next   
 
@@ -77,18 +92,6 @@
 
            output to one dimensional array: {1, 12, 21}
          */
-
-        function CopyBucketToNumber(numbers) {
-            var k = 0;
-            for (var i = 0; i < DIGIT_10; i++) {
-                var bucket = buckets[i];
-                var length = bucket.length;
-                for (var j = 0; j < length; j++) {
-                    numbers[k++] = bucket[j];
-                }
-            }
-        }
-
         function ClearBucket() {
             for (var i = 0; i < DIGIT_10; i++) {
                 buckets[i] = [];
@@ -105,14 +108,13 @@
 <button onclick="RadixSortDemo()">Radix Sort</button>
 
 <p id="ArrayOutput"></p>
+
+
 <script>
         var testCase = [],a=[];
         var n;
             n=prompt("Ingrese el tamaño del Arreglo: ");
-            document.write("<font face='arial' size='4'>RADIX SORT </font>");
-            document.write("<br><br>");
             for (a=0; a<n; a++) {
-            //values.push(Number(prompt("Ingrese el valor de la posición N° " + (a+1))));
             testCase.push(Math.floor(Math.random(a)*200+1));
     }
         document.getElementById("ArrayOutput").innerHTML = testCase;
