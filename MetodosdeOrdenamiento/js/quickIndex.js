@@ -86,7 +86,7 @@ app.controller('controller', function($scope) {
       yAxis: {
         axisLabel: 'Nº Operaciones (Y)',
         tickFormat: function(d){
-          return d3.format('.f')(d);
+          return (d3.format('.f')(d))*100;
         },
         axisLabelDistance: 20
       },

@@ -166,7 +166,7 @@ app.controller('controller', function($scope) {
     $scope.data[1].values = [];
     $scope.data[2].values = [];
     $scope.data[3].values = [];
-    for (var i = 20; i < 201; i++) {
+    for (var i = 20; i < 41; i++) {
       var arrB = [],
       arrS = [],
       arrI = [],

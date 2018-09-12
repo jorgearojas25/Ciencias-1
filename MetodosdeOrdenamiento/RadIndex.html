@@ -6,6 +6,8 @@
  <body> 
  <script>
     var RadixSort_RevealingModule = function () {
+
+
 	
 	/*Falta introducir el contador y las operaciones elementales por formula*/
 
@@ -56,42 +58,7 @@
                 }
             }
         }
- /*
-           Radix sort: 
-           Sort most insignificant digit first, and then, move to next   
 
-           digit to the left.
-
-           The function is to save the previous result to current, 
-
-           for next iteration. Actually, the sorting result is in 
-
-           buckets (kind of jagged array), go through one by one, if it 
-
-           is not empty, output to the one dimension array. 
-
-           Go over the test case customized for instructional purpose: 
-
-           var numeros = [12, 21, 1];
-
-           First iteration, sort the rightmost insignificant digit, 
-
-           buckets[0] ={},  buckets[1] ={21, 1}, buckets[2] = {12}. 
-
-           The following function will retrieve the result from buckets[10] 
-
-           and build a one-dimension array, {21,1,12}
-
-           Next iteration: 
-
-           Sort second one next to rightmost, from {21,1,12}, buckets clear 
-
-           first,  and then, populate with:
-
-           buckets[0]={1}, buckets[1]={12}, buckets[2]={21}, and then, 
-
-           output to one dimensional array: {1, 12, 21}
-         */
         function ClearBucket() {
             for (var i = 0; i < DIGIT_10; i++) {
                 buckets[i] = [];
@@ -106,19 +73,24 @@
 <p>Presione para ordenar el siguiente arreglo</p>
 
 <button onclick="Ordenar()">Radix Sort</button>
-
+<div id = "ArrayNo"></div>
 <p id="ArrayOutput"></p>
+<div id="radixformula"></div>
+<div id="radixcount"></div>
 
 
 <script>
         var numeros = [],a=[];
         var n;
+        var m;
+        var radixform = 0;
+        var radixcount= 0;
             n=prompt("Ingrese el tamaño del Arreglo: ");
+            radixform =  (3*(15+(n*3+20)*3));
             for (a=0; a<n; a++) {
             numeros.push(Math.floor(Math.random(a)*200+1));
-    }
-        document.getElementById("ArrayOutput").innerHTML = numeros;
-
+            }
+            document.getElementById("ArrayOutput").innerHTML = numeros;
         var buckets = new Array(10);
         function Ordenar() {                
             Inicializar ();
@@ -126,9 +98,12 @@
                 for (var i = 0; i < 10; i++)
                     buckets[i] = [];
             }
-
             RadixSort_RevealingModule.RadixSort(numeros, buckets);
             document.getElementById("ArrayOutput").innerHTML = buckets;
+            document.getElementById("ArrayNo").innerHTML = numeros;
+            
+            document.getElementById("radixformula").innerHTML ="Formula: "+ radixform;
+            document.getElementById("radixcount").innerHTML ="Contador "+ radixform;
         }
    </script>
 </body>
