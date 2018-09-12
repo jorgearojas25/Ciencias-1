@@ -11,13 +11,13 @@
 
         var DIGIT_10 = 10;
 
-        RadixSort = function RadixSort(testCase, buckets) {
-            var maxElement = Math.max.apply(null, testCase);
+        RadixSort = function RadixSort(numeros, buckets) {
+            var maxElement = Math.max.apply(null, numeros);
             var maxDigits = GetDigitsCount(maxElement);
             var count = 0;
 
-            var length = testCase.length;
-            var numbers = testCase;
+            var length = numeros.length;
+            var numbers = numeros;
             while (count < maxDigits) {
                 var divisor = Math.pow(10, count);
                 for (var index = 0; index < length; index++) {                        
@@ -72,7 +72,7 @@
 
            Go over the test case customized for instructional purpose: 
 
-           var testCase = [12, 21, 1];
+           var numeros = [12, 21, 1];
 
            First iteration, sort the rightmost insignificant digit, 
 
@@ -105,29 +105,29 @@
 </script>      
 <p>Presione para ordenar el siguiente arreglo</p>
 
-<button onclick="RadixSortDemo()">Radix Sort</button>
+<button onclick="Ordenar()">Radix Sort</button>
 
 <p id="ArrayOutput"></p>
 
 
 <script>
-        var testCase = [],a=[];
+        var numeros = [],a=[];
         var n;
             n=prompt("Ingrese el tamaño del Arreglo: ");
             for (a=0; a<n; a++) {
-            testCase.push(Math.floor(Math.random(a)*200+1));
+            numeros.push(Math.floor(Math.random(a)*200+1));
     }
-        document.getElementById("ArrayOutput").innerHTML = testCase;
+        document.getElementById("ArrayOutput").innerHTML = numeros;
 
         var buckets = new Array(10);
-        function RadixSortDemo() {                
-            Initialization();
-            function Initialization() {
+        function Ordenar() {                
+            Inicializar ();
+            function Inicializar () {
                 for (var i = 0; i < 10; i++)
                     buckets[i] = [];
             }
 
-            RadixSort_RevealingModule.RadixSort(testCase, buckets);
+            RadixSort_RevealingModule.RadixSort(numeros, buckets);
             document.getElementById("ArrayOutput").innerHTML = buckets;
         }
    </script>
