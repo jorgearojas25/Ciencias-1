@@ -52,12 +52,13 @@ app.controller('controller', function($scope) {
   // Sobreescribe arr
   function generarArreglo() {
     $scope.data[0].values = [];
-    for (var i = 20; i < 201; i++) {
+    for (var i = 20; i < 41; i++) {
       var arrQ = [];
       for (var j = 0; j < i; j++) {
-        var aleatorio = Math.floor((Math.random() * 200) + 1); // Genera un número aleatorio entre 1 y 200
+        var aleatorio = Math.floor((Math.random() * 200) + 1); // Genera un número aleatorio entre 1 y 100
         arrQ.push(aleatorio);
       }
+      quickSort(arrQ);
       $scope.data[0].values.push({x: i, y: contQuick});
     }
   }
@@ -86,14 +87,14 @@ app.controller('controller', function($scope) {
       yAxis: {
         axisLabel: 'Nº Operaciones (Y)',
         tickFormat: function(d){
-          return (d3.format('.f')(d))*100;
+          return d3.format('.f')(d);
         },
         axisLabelDistance: 20
       },
     },
     title: {
       enable: true,
-      text: 'Valores Algoritmo de ordenamiento QuickSort'
+      text: 'Tabla de comparación metodo QuickSort'
     }
   };
 
