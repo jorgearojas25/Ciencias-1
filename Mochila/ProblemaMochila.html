@@ -152,7 +152,7 @@
 									if (C[i][j] === "0") {
 										C[i][j] === "";
 									} else {
-											C[i][j] = C[i - 1][j - (A[i][1])] + A[  i ][0]+":<b style='color:purple'>"+i+"</b>+";
+											C[i][j] = C[i - 1][j - (A[i][1])] + A[  i ][0]+"$ "+":<b style='color:purple'>"+"del articulo "+i+" "+"</b>";
 }
 									//C[i][j] = C[i - 1][j - (A[i][1])] + "[" + i + "]";
 									//C[i][j] = C[i - 1][j - (A[i][1])] + "+A[" + i + "][0]";
@@ -185,7 +185,7 @@
 						}
 						llenaMatrizB += "<tr>";
 						for (var j = 0; j <= pesoMaximo; j++) {
-							llenaMatrizB += "<td><input type = 'text' value = " + B[i][j] + " style='height:100%;' disabled ='true'><label>"+C[i][j]+"</label></td>";
+							llenaMatrizB += "<td><input type = 'text' value = " + B[i][j] + " <style='height:100%;' disabled ='true'><label>"+C[i][j]+"</label></td>";
 							console.log(i + '' + j);
 							console.log(B[i][j]);
 						}
@@ -226,6 +226,8 @@
 					llenado += B[cantidad][pesoMaximo];
 					llenado += " con los siguientes elementos ";
 					llenado += C[cantidad][pesoMaximo];
+					llenado += " peso maximo de: ";
+					llenado += pesoMaximo;
 
 					respuesta.innerHTML = llenado;
 				}
@@ -285,7 +287,7 @@
                         </div>
                         <div id="resultado B">
                         </div>
-                        <!-- MATRIZ C <div id="resultado C"></div> -->
+                        MATRIZ C <div id="resultado C"></div>
 						<div id="prueba">
                         </div>
                     </div>

@@ -1,0 +1,210 @@
+<HTML>
+	<script type="text/javascript">
+			var monedas = new Array();
+			var matrizCambio = new Array(monedas.length);		
+			var vectorSeleccion = new Array(cantidad,monedas,matrizCambio);
+			var tabla = new Array();
+			var seleccion = new Array(monedas.length);
+			var cantidad;
+			var c;
+			var contador;
+
+			function DatoI(){
+				cantidad = document.getElementById("cantidad_I").value;
+				alert("Cantidad para dar vueltas= "+ cantidad);
+				c= cantidad;
+				contador = cantidad;
+			}
+
+			function usuarios(){				
+					var valorNombre = document.nombreFormulario.usuario.value;
+					monedas.push(valorNombre);
+					alert("Moneda " + monedas.length + " =" + valorNombre); // 					
+			}
+
+			function calcularMonedas(){
+			
+				var orden;
+				var o,p;
+				for (o = 0; o < monedas.length-1; o++) {
+				for (p = o + 1; p < monedas.length; p++) {
+					if (monedas[o] > monedas[p]) {
+						orden = monedas[o];
+							monedas[o] = monedas[p];
+							monedas[p] = orden;
+						}
+					}
+
+				}
+			
+				for (i = 0; i < monedas.length+1; i++){
+					matrizCambio[i]= new Array(cantidad+1);
+				}
+
+				for ( i = 0; i < monedas.length; i++){
+	            	matrizCambio[i][0] = 0;
+				}
+
+		        for ( j = 1; j < cantidad; j++){
+		            matrizCambio[0][j] = j;
+		        }
+
+				for ( i = 1; i <= monedas.length; i++){
+				    for ( j = 1; j <= cantidad; j++) {
+				        if (j < monedas[i - 1]) {
+				        	//alert("eNSAYO " +  matrizCambio[i]); 
+				            matrizCambio[i][j] = matrizCambio[i - 1][j];
+				        } else {
+							var minimo = 0;
+		                    minimo = min(matrizCambio[i - 1][j] , matrizCambio[i][j- monedas[i - 1]] + 1);
+		                    matrizCambio[i][j] = minimo;
+                		}
+					}
+            	}
+				matrizCambio[monedas.length][0]=0;
+/*				
+				var orden;
+				var o,p;
+				for (o = 0; o < matrizCambio.length-1; o++) {
+				for (p = o + 1; p < matrizCambio.length; p++) {
+					if (matrizCambio[o] > matrizCambio[p]) {
+						orden = matrizCambio[o];
+							matrizCambio[o] = matrizCambio[p];
+							matrizCambio[p] = orden;
+						}
+					}
+
+				}
+				*/
+				tabla=matrizCambio
+				return matrizCambio;
+			}
+
+			function seleccionarMonedas(){
+		        var i,j;
+		        for(i = 0; i< monedas.length; i++){ 
+		            seleccion[i]=0;         
+		        }
+		        i= monedas.length;         
+		        j= c;         
+		        
+		        while(j>0){
+		            if(i>1 && tabla[i][j]==tabla[i-1][j]){
+		                i--;
+		            }
+		            else{
+		                seleccion[i-1]++;
+		                j = j - monedas[i-1];
+		            }
+		        }
+
+		        return seleccion;
+		    }
+
+		    function min(a, b){
+		        if(a<b)
+		            return a;
+
+		        else 
+		            return b;
+		    }
+
+
+			function Mostrar(){
+				console.log(monedas);
+				console.log(matrizCambio);
+				console.log(vectorSeleccion);
+				console.log(seleccion);
+			}
+
+			function MostrarMatriz(){
+
+
+
+			}
+
+			function Resultado(){
+				var orden;
+				var o,p;
+				for (o = 0; o < monedas.length-1; o++) {
+				for (p = o + 1; p < monedas.length; p++) {
+					if (monedas[o] > monedas[p]) {
+						orden = monedas[o];
+							monedas[o] = monedas[p];
+							monedas[p] = orden;
+						}
+					}
+
+				}
+				document.write("Se necesitan "+ "<br/>" );
+				for( i = 0; i< seleccion.length;i++){
+					document.write(seleccion[i]+ " monedas de " + monedas[i] + "<br/>" );
+
+				}
+
+
+				for (i=0; i<monedas.length+1 ;i++){
+						document.write("<br/>");
+						document.write("<br/>");
+						document.write("<br/>");
+						document.write("<br/>");
+					for (j=0; j<12; j++){
+						document.write(matrizCambio[i][j]+"  ");
+					}
+				}
+			}
+			
+			function Comprobar(){
+				var modulo=0;				
+				for(i=0; i<monedas.length ;i++){
+					//alert("Ingresa   " +  (cantidad%monedas[i]));
+					if(cantidad%monedas[i]>=1){
+					
+						modulo = modulo +1;
+					}
+				}
+				if(modulo==monedas.length){
+					document.write("No se puede dar vueltas");
+				}
+				
+			}
+			
+			
+/*		<button onclick="Mostrar();">Consola</button>
+		<button onclick="MostrarMatriz();">Mostrar Matriz</button>
+		<button onclick="Comprobar();">Es posible</button>
+*/
+
+	</script>
+	<head>
+	  <meta charset="utf-8">
+  <title> Monedas </title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" href="styles/index.css"/>
+  <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+	</head>
+	<body>
+		<div class="container">
+      <h3 class="display-5" >Monedas</h3>
+
+		<div class="form-group">
+        <label for="peso_limite">Cantidad a devolver:</label>
+        <input type="number" id="cantidad_I" class="form-control" placeholder="Ingresa el valor limite">
+      </div>
+		<button onclick="DatoI();">Cantidad</button>
+		<form name="nombreFormulario">
+		<input type="text" name="usuario"/>tipos de moneda
+		<br>
+
+		<input type="button" value="Ingresar Moneda" onClick="usuarios();"/>
+		</form>
+		<button onclick="calcularMonedas();">Crear Matriz</button>
+		<button onclick="seleccionarMonedas();">Cantidad de Moneda</button>
+		<button onclick="Comprobar();">Es posible</button>
+
+		<button onclick="Resultado();">Mostrar resultado</button>
+
+
+
+	</body>
+</HTML>
