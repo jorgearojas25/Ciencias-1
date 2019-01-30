@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Solucion ecuaciones en recurrencia</title>
+	<!--<link rel="stylesheet" type="text/css" href="style.css">-->
+	<script type="text/javascript" src="generarEntradas.js"></script>
+	<script type="text/javascript" src="leerDatos.js"></script>
+	<script type="text/javascript" src="DivisionSintetica.js"></script>
+	<script type="text/javascript" src="sistemaEcuaciones.js"></script>
+	<script type="text/javascript" src="Gauss.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="escribirEcuacion.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div id="gradoEcuacion">
+			<label>Ingrese el grado de la ecuacion  <input type="text" id="entradaGradEcu"></label><br>
+			<input type="button" onclick="generarEntradas()" value="Generar campos">
+		</div>
+		<div id="datosEntrada">
+			<div id="condIniciales"></div>
+			<div id="coeficientes"></div><br>
+			<input type="button" value="Mostrar Ecuacion" id="btnSolucion" onclick="recibirDatos()">
+		</div>
+		<div id="divSalida"></div>
+	</div>
+</body>
+</html>

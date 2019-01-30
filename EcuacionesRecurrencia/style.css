@@ -1,0 +1,67 @@
+body{
+	font-size: 16px;
+	background: #2F4858;
+}
+
+.container{
+	background: #86BBD8;
+	border-radius: 1.2em;
+	padding: 1em;
+}
+
+#entradaGradEcu{
+	width: 1.5em;
+}
+
+#gradoEcuacion{
+	text-align: center;
+}
+
+#gradoEcuacion *{
+	margin: .5em 0;
+}
+
+#datosEntrada {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#datosEntrada div{
+	display: inline-block;
+	margin: 1em;
+}
+
+#btnSolucion{
+	display: none;
+}
+
+#condIniciales *{
+	display: block;
+	text-align: center;
+}
+
+#coeficientes{
+	text-align: center;
+	display: block;
+}
+
+#divSalida{
+	text-align: center;
+}
+
+input[id^="coef"]{
+	margin: .2em;
+	width: 3em;
+}
+
+input[id^="N"]{
+	margin: .2em;
+	width: 3em;
+	display: inline-block;
+}
+
+input[id^="Fn"]{
+	margin: .2em;
+	width: 3em;
+	display: inline-block;
+}
