@@ -1,6 +1,7 @@
 package main;
 
 import cliente.Principal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -9,9 +10,12 @@ import cliente.Principal;
 public class Lanzador {
 
     public static void main(String[] args) {
-        Principal ventana = new Principal();
+       try {
+           Principal ventana = new Principal();
         ventana.setVisible(true);
-        
+       }catch(Exception e){
+           int ERROR_MESSAGE = JOptionPane.ERROR_MESSAGE;
+       }
     }
     
 }

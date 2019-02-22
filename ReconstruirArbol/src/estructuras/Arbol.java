@@ -1,5 +1,8 @@
 package estructuras;
 
+import java.awt.Component;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jorge
@@ -83,9 +86,10 @@ public class Arbol {
 
     /* Reconstruir arbol con los recorridos inOrden y preOrden */
     public Nodo reconstruirArbolPre(int[] inOrden, int[] preOrden) {
+        try {
         this.agregarNodo(preOrden[0]);
         int inIzq[], preIzq[], inDer[], preDer[], contador = 0;
-
+        
         while (inOrden[contador] != preOrden[0]) {
             contador++;
         }
@@ -117,10 +121,17 @@ public class Arbol {
             this.reconstruirArbolPre(inDer, preDer);
         }
         return this.raiz;
+        }catch (Exception e){
+            Component parentComponent;
+             JOptionPane.showMessageDialog(null, "Exsiste un error en los recorridos, revisar");
+             return this.raiz = null;
+        }
+       
     }
 
     /* Recostruir el árbol con los recorridos inOrden y postOrden*/
     public Nodo reconstruirArbolPost(int[] inOrden, int[] postOrden) {
+        try{
         this.agregarNodo(postOrden[postOrden.length - 1]);
         int inIzq[], postIzq[], inDer[], postDer[], contador = 0;
 
@@ -150,6 +161,9 @@ public class Arbol {
                 cont++;
             }
             this.reconstruirArbolPost(inDer, postDer);
+        }
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Existe un error en los recorridos, favor revisar");
         }
         return this.raiz;
     }

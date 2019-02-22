@@ -7,7 +7,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author jcamilosarmientor
+ * @author Jorge
  */
 public class Principal extends javax.swing.JFrame {
 
@@ -168,6 +168,7 @@ public class Principal extends javax.swing.JFrame {
         String in = "6,7,8,10,11,12,13,15";
         String post = "6,8,7,13,12,11,15,10";
         String pre = "10,7,6,8,15,11,12,13";
+        
         
         in = "-1,6,7,8,10,15";
         post = "-1,6,8,7,15,10";
